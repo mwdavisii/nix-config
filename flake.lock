@@ -690,6 +690,26 @@
         "type": "github"
       }
     },
+    "nix-index-database": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1735443188,
+        "narHash": "sha256-AydPpRBh8+NOkrLylG7vTsHrGO2b5L7XkMEL5HlzcA8=",
+        "owner": "nix-community",
+        "repo": "nix-index-database",
+        "rev": "55ab1e1df5daf2476e6b826b69a82862dcbd7544",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nix-index-database",
+        "type": "github"
+      }
+    },
     "nix-on-droid": {
       "inputs": {
         "home-manager": [
@@ -1074,6 +1094,7 @@
         "hyprland-plugins": "hyprland-plugins",
         "kmonad": "kmonad",
         "nix-homebrew": "nix-homebrew",
+        "nix-index-database": "nix-index-database",
         "nix-on-droid": "nix-on-droid",
         "nixos-generators": "nixos-generators",
         "nixos-wsl": "nixos-wsl",

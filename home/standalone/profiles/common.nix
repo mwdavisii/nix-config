@@ -1,0 +1,70 @@
+{ config, lib, pkgs, inputs, ... }:
+
+with lib;
+let cfg = config.nyx.profiles.common;
+in
+{
+  imports = [inputs.nix-index-database.hmModules.nix-index];
+
+  options.nyx.profiles.common = { enable = mkEnableOption "common profile"; };
+
+  config = mkIf cfg.enable {
+    home = {
+      enableDebugInfo = true;
+      packages = with pkgs; [
+        # Determine file type.
+        file
+        # Show full path of shell commands.
+        which
+        # Daemon to execute scheduled commands.
+        cron
+        # Collection of useful tools that aren't coreutils.
+        moreutils
+        # Non-interactive network downloader.
+        wget
+        # List directory contents in tree-like format.
+        tree
+        # Interactive process viewer.
+        htop
+        # Mote interactive top (btm)
+        bottom
+        # Compress/uncompress `.zip` files.
+        unzip
+        zip
+        # Man pages
+        man
+        man-pages
+        man-pages-posix
+        stdman
+        # grep alternative.
+        ripgrep
+        # ls alternative.
+        eza
+        # Simple, fast and user-friendly alternative to find.
+        fd
+        # sed alternative
+        sd
+        # Interactive du with rm functionality
+        dua
+        # A modern replacement for ps
+        procs
+        # Encrypted files in Git repositories
+        git-crypt
+        # Runs programs without installing them
+        tuxmux
+      ];
+    };
+
+    # Manage home-manager with home-manager (inception)
+    programs.home-manager.enable = true;
+
+    # Install home-manager manpages.
+    manual.manpages.enable = true;
+
+    # Install man output for any Nix packages.
+    programs.man.enable = true;
+
+    programs.nix-index-database.comma.enable = true;
+
+  };
+}

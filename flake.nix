@@ -3,6 +3,8 @@
     # Core
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nix-index-database.url = "github:nix-community/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -125,11 +127,11 @@
         nix-on-droid = { user = "droid"; };
         default = { user = "droid"; };
       };
-/*
-      homeManagerConfigurations = mapAttrs' mkHome {
-        mdavis67 = { };
+
+      homeConfigurations = mapAttrs' mkHome {
+        L242731 = { user = "mdavis67"; system = "x86_64-linux"; };
       };
-*/
+
       darwinConfigurations = mapAttrs' mkNixSystemConfiguration {
         mwdavis-workm1 = { system = "aarch64-darwin"; user = "mwdavisii"; buildTarget = "darwin"; }; #macbook
 	      L211011 = { system = "aarch64-darwin"; user = "mdavis67"; buildTarget = "darwin"; };
